@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Short Templates</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="page">
+		<p class="eyebrow">Quick copy</p>
+		<h1>Short templates.</h1>
+		<p class="intro">Small words for everyday moments.</p>
+
+		<section class="templates" aria-label="Short templates">
+			<article class="template">
+				<h2>Thank you</h2>
+				<p>Thanks so much. I really appreciate it.</p>
+				<button type="button" data-copy="Thanks so much. I really appreciate it.">Copy</button>
+			</article>
+			<article class="template">
+				<h2>Follow-up</h2>
+				<p>Just checking in. Any updates?</p>
+				<button type="button" data-copy="Just checking in. Any updates?">Copy</button>
+			</article>
+			<article class="template">
+				<h2>Decline</h2>
+				<p>Thanks for thinking of me. I’ll pass this time.</p>
+				<button type="button" data-copy="Thanks for thinking of me. I’ll pass this time.">Copy</button>
+			</article>
+			<article class="template">
+				<h2>Bio</h2>
+				<p>I make useful things, simply.</p>
+				<button type="button" data-copy="I make useful things, simply.">Copy</button>
+			</article>
+		</section>
+	</main>
+
+	<script>
+		document.querySelectorAll('[data-copy]').forEach((button) => {
+			button.addEventListener('click', async () => {
+				await navigator.clipboard.writeText(button.dataset.copy);
+				button.textContent = 'Copied';
+				setTimeout(() => { button.textContent = 'Copy'; }, 1200);
+			});
+		});
+	</script>
+</body>
+</html>
